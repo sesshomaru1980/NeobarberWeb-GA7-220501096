@@ -19,18 +19,10 @@ Frontend: HTML5, CSS3, js y JSP dinámico
 ​
 
 Estructura del Proyecto
-neobarber/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── controllers/ (Servlets para citas, usuarios, servicios)
-│   │   ├── webapp/
-│   │   │   ├── WEB-INF/
-│   │   │   │   └── web.xml
-│   │   │   ├── jsp/ (Páginas de vistas)
-│   │   │   └── css/js/ (Estilos y scripts)
-├── pom.xml (Maven)
-└── sql/ (Scripts de base de datos)
+
+
+<img width="660" height="290" alt="image" src="https://github.com/user-attachments/assets/daba18f0-81f5-4f9c-97a6-d34001c90b38" />
+
 Instalación
 Clona el repositorio: git clone <url>
 
