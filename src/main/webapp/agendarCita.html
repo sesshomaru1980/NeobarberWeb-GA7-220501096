@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>📅 Agendar Cita - NeoBarber</title>
+    <meta charset="UTF-8">
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #74b9ff, #0984e3); margin: 0; padding: 20px; min-height: 100vh; }
+        .container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #2d3436; margin-bottom: 30px; }
+        .form-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 8px; color: #636e72; font-weight: bold; }
+        input, select { width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; transition: border-color 0.3s; }
+        input:focus, select:focus { outline: none; border-color: #74b9ff; }
+        .btn { width: 100%; padding: 18px; background: linear-gradient(45deg, #00b894, #00a085); color: white; border: none; border-radius: 10px; font-size: 18px; cursor: pointer; transition: transform 0.3s; }
+        .btn:hover { transform: translateY(-2px); }
+        .back { background: #636e72; text-decoration: none; color: white; text-align: center; display: block; padding: 12px; border-radius: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+<div style="text-align: center; padding: 20px 0;">
+    <img src="neobarber-logo.png" alt="NeoBarber"
+         style="width: 180px; height: auto; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+    <h1 style="color: white; margin-top: 15px; font-size: 2.5em; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">💈 NeoBarber</h1>
+</div>
+
+<div class="container">
+    <h1>📅 Agendar Nueva Cita</h1>
+    <form action="citas" method="POST">
+        <div class="form-group">
+            <label>👤 Nombre Completo</label>
+            <input type="text" name="nombre" required placeholder="Juan Pérez">
+        </div>
+        <div class="form-group">
+            <label>📧 Correo Electrónico</label>
+            <input type="email" name="correo" required placeholder="juan@email.com">
+        </div>
+        <div class="form-group">
+            <label>📱 Teléfono</label>
+            <input type="tel" name="telefono" required placeholder="3001234567">
+        </div>
+        <div class="form-group">
+            <label>📅 Fecha</label>
+            <input type="date" name="fecha" required>
+        </div>
+        <div class="form-group">
+            <label>🕒 Hora</label>
+            <input type="time" name="hora" required>
+        </div>
+        <div class="form-group">
+            <label>✂️ Barbero</label>
+            <select name="barbero" required>
+                <option value="">Seleccionar barbero</option>
+                <option value="Juan">Juan - Especialista Cortes</option>
+                <option value="Carlos">Carlos - Barbas y Bigotes</option>
+                <option value="Andrés">Andrés - Tratamientos Faciales</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>💇‍♂️ Servicio</label>
+            <div class="form-group">
+                <label>💰 Servicio (Precio)</label>
+                <select name="servicio" id="servicioSelect" required onchange="mostrarPrecio()">
+                    <option value="">Seleccionar servicio</option>
+                    <option value="1" data-precio="35000">Corte de cabello - $35.000</option>
+                    <option value="2" data-precio="25000">Arreglo de barba y bigote - $25.000</option>
+                    <option value="3" data-precio="20000">Afeitado - $20.000</option>
+                    <option value="4" data-precio="45000">Tratamientos faciales - $45.000</option>
+                    <option value="5" data-precio="60000">Tintes de barba y cabello - $60.000</option>
+                    <option value="6" data-precio="35000">Manicura/Pedicura - $35.000</option>
+                    <option value="7" data-precio="15000">Depilación de cejas - $15.000</option>
+                    <option value="8" data-precio="50000">Masajes - $50.000</option>
+                    <option value="9" data-precio="55000">Tratamientos capilares - $55.000</option>
+                </select>
+                <div id="precioMostrado" style="font-size:20px; color:#00b894; font-weight:bold; margin-top:10px; padding:10px; background:#e8f5e8; border-radius:8px; display:none;"></div>
+            </div>
+
+            <script>
+                function mostrarPrecio() {
+                    const select = document.getElementById('servicioSelect');
+                    const precioDiv = document.getElementById('precioMostrado');
+
+                    if (select.value) {
+                        const precio = select.options[select.selectedIndex].dataset.precio;
+                        const precioFormateado = parseInt(precio).toLocaleString();
+                        precioDiv.innerHTML = `💰 Precio seleccionado: $${precioFormateado}`;
+                        precioDiv.style.display = 'block';
+                    } else {
+                        precioDiv.style.display = 'none';
+                    }
+                }
+            </script>
+
+        </div>
+        <button type="submit" class="btn">✅ Reservar Cita</button>
+    </form>
+    <a href="index.html" class="back">🔙 Volver al Inicio</a>
+</div>
+</body>
+</html>
